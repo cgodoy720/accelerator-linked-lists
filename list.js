@@ -22,14 +22,20 @@ class LinkedList {
     }
 
     insert(data){
+        // Create a new instance of the Node class using the data from the param
         const node = new Node(data)
+        // Initialize a currentNode as this.head
         let currentNode = this.head
+        // If there is no head, then assign this.head to be the newly created Node
         if(currentNode === null){
             this.head = node
         } else {
+            // Otherwise check if there is a next node after the current node
             while(currentNode.next){
+                // If there is, reassign currentNode to be the next node
                 currentNode = currentNode.next
             }
+            // When we exit the while loop it means that we are at the last node in the list. Assign the newly created node to be currentNode's next property
             currentNode.next = node
         }
     }
@@ -47,6 +53,7 @@ class LinkedList {
 
     getLast(){
         let currentNode = this.head
+        // The "?" is for "optional chaining". Meaning if there IS a currentNode, then check its "next" property
         while(currentNode?.next){
             currentNode = currentNode.next
         }
